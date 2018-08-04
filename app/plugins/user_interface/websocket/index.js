@@ -1762,9 +1762,8 @@ function InterfaceWebUI(context) {
         });
 
         connWebSocket.on('sendBroadcast', function (data) {
-	        var selfConnWebSocket = this;
 	        self.logger.info("Send Broadcast " + JSON.stringify(data));
-            selfConnWebSocket.emit('receiveBroadcast', data);
+            self.libSocketIO.sockets.emit('receiveBroadcast', data);
         });
 	});
 };
