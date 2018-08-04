@@ -17,11 +17,15 @@ function InterfaceWebUI(context) {
 
 	self.logger = self.commandRouter.logger;
 
+	self.logger.info("socket.io init");
+
 	/** Init SocketIO listener */
 	self.libSocketIO = require('socket.io')(self.context.websocketServer);
 
 	/** On Client Connection, listen for various types of clients requests */
 	self.libSocketIO.on('connection', function (connWebSocket) {
+			self.logger.info("socket.io connection");
+
 
             connWebSocket.on('getDeviceInfo', function () {
                 var uuid=self.commandRouter.sharedVars.get('system.uuid');
