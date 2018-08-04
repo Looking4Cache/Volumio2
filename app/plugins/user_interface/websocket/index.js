@@ -1757,6 +1757,9 @@ function InterfaceWebUI(context) {
             self.commandRouter.closeModals();
         });
 
+        connWebSocket.on('sendBroadcast', function (data) {
+            connWebSocket.emit('receiveBroadcast', data);
+        });
 	});
 };
 
